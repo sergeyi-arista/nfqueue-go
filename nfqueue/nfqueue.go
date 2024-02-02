@@ -333,7 +333,7 @@ func build_payload(c_qh *C.struct_nfq_q_handle, ptr_nfad *unsafe.Pointer) *Paylo
 //
 // Every queued packet _must_ have a verdict specified by userspace.
 func (p *Payload) SetVerdict(verdict int) error {
-    log.Printf("Setting verdict for packet %d: %d\n",p.Id,verdict)
+    //log.Printf("Setting verdict for packet %d: %d\n",p.Id,verdict)
     C.nfq_set_verdict(p.c_qh,C.u_int32_t(p.Id),C.u_int32_t(verdict),0,nil)
     return nil
 }
@@ -343,7 +343,7 @@ func (p *Payload) SetVerdict(verdict int) error {
 //
 // Every queued packet _must_ have a verdict specified by userspace.
 func (p *Payload) SetVerdictModified(verdict int, data []byte) error {
-    log.Printf("Setting verdict for NEW packet %d: %d\n",p.Id,verdict)
+    //log.Printf("Setting verdict for NEW packet %d: %d\n",p.Id,verdict)
     C.nfq_set_verdict(
         p.c_qh,
         C.u_int32_t(p.Id),
